@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~ Licensed to the Apache Software Foundation (ASF) under one or more
+~ contributor license agreements.  See the NOTICE file distributed with
+~ this work for additional information regarding copyright ownership.
+~ The ASF licenses this file to You under the Apache License, Version 2.0
+~ (the "License"); you may not use this file except in compliance with
+~ the License.  You may obtain a copy of the License at
+~
+~    http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.qubole.spark</groupId>
+  <artifactId>spark-streaminglens_2.11</artifactId>
+  <version>0.1.0</version>
+  <packaging>jar</packaging>
+  <name>Streaminglens Integration for Structured Streaming</name>
+  <description>Profiling Tool for Spark Structured Streaming Applications</description>
+  <url>http://github.com/qubole/streaminglens</url>
+
+  <developers>
+    <developer>
+      <id>qubole</id>
+      <organization>Qubole Inc.</organization>
+      <organizationUrl>http://www.qubole.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://github.com/qubole/streaminglens/blob/master/LICENSE.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/qubole/streaminglens.git</connection>
+    <url>http://github.com/qubole/streaminglens</url>
+    <developerConnection>scm:git:git@github.com:qubole/streaminglens.git</developerConnection>
+    <tag>spark-streaminglens_2.11-0.1.0</tag>
+  </scm>
+
+  <inceptionYear>2020</inceptionYear>
+  <organization>
+    <name>Qubole</name>
+    <url>http://www.qubole.com/</url>
+  </organization>
+
+  <properties>
+    <sbt.project.name>spark-streaminglens</sbt.project.name>
+    <spark.version>2.4.0</spark.version>
+    <scala.binary.version>2.11</scala.binary.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>spark-packages</id>
+      <url>https://dl.bintray.com/spark-packages/maven/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_${scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>qubole</groupId>
+      <artifactId>sparklens</artifactId>
+      <version>0.3.1-s_2.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>9.4.13.v20181111</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>net.alchim31.maven</groupId>
+          <artifactId>scala-maven-plugin</artifactId>
+          <version>4.0.2</version>
+          <executions>
+            <execution>
+              <id>compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <phase>compile</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.1.0</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <artifactSet>
+                  <includes>
+                    <include>qubole:sparklens:*</include>
+                  </includes>
+                </artifactSet>
+                <relocations>
+                  <relocation>
+                    <pattern>com.qubole.sparklens</pattern>
+                    <shadedPattern>com.qubole.streaminglens.shaded.sparklens</shadedPattern>
+                    <includes>
+                      <include>com.qubole.sparklens.**</include>
+                    </includes>
+                  </relocation>
+                </relocations>
+                <filters>
+                  <filter>
+                    <artifact>*:*</artifact>
+                    <excludes>
+                      <exclude>META-INF/*</exclude>
+                    </excludes>
+                  </filter>
+                </filters>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>        
+    </pluginManagement>
+    <!-- Enable surefire and scalatest in all children, in one place: -->
+    <plugins>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.0.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.0</version>
+      </plugin>
+    </plugins>
+    <outputDirectory>target/scala-${scala.binary.version}/classes</outputDirectory>
+    <testOutputDirectory>target/scala-${scala.binary.version}/test-classes</testOutputDirectory>
+  </build>
+</project>
