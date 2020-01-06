@@ -105,11 +105,11 @@ If you need to pass any additional options to your StreamingLens reporter class,
 Streaminglens supports various configuration options.
 
 Name |Default | Meaning
---- |:---:| ---
+--- |:---:|---
 `streamingLens.analysisIntervalMinutes`|5 mins|Frequency of analysis of micro-batches
-`streamingLens.criticalPathAnalysis.overProvisionPercentage`|0.3 (or 30%)|Percentage below which to consider spark cluster as over-provisoned, example: if batch running time is less than 30% of expected micro-batch SLA, cluster is considered over-provisioned
-`streamingLens.criticalPathAnalysis.underProvisionPercentage`|0.7 (or 70%)|Percentage above which to consider spark cluster as under-provisioned, example: if batch running time is more than 70% of expected micro-batch SLA, cluster is considered under-provisioned
-`streamingLens.criticalPathAnalysis.criticalPathPercentage`|0.7 (or 70%)|Percentage above which to consider spark application configured incorrectly, example: if critical time is more than 70% of expected micro-batch SLA, pipeline is unhealthy and spark cluster is improperly configured
+`streamingLens.criticalPathAnalysis. overProvisionPercentage`|0.3 (or 30%)|Percentage below which to consider spark cluster as over-provisoned, example: if batch running time is less than 30% of expected micro-batch SLA, cluster is considered over-provisioned
+`streamingLens.criticalPathAnalysis. underProvisionPercentage`|0.7 (or 70%)|Percentage above which to consider spark cluster as under-provisioned, example: if batch running time is more than 70% of expected micro-batch SLA, cluster is considered under-provisioned
+`streamingLens.criticalPathAnalysis. criticalPathPercentage`|0.7 (or 70%)|Percentage above which to consider spark application configured incorrectly, example: if critical time is more than 70% of expected micro-batch SLA, pipeline is unhealthy and spark cluster is improperly configured
 `streamingLens.minBatches`|1|Minimum no of batches which must be completed before doing next analysis
 `streamingLens.maxResultsRetention`|30|Number of analysis results to retain in-memory
 `streamingLens.maxBatchesRetention`|10|Number of batches for which metrics are retained in-memory
