@@ -118,7 +118,7 @@ Name |Default | Meaning
 `streamingLens.shouldLogResults`|true|Whether to print analysis results in spark driver logs
 `streamingLens.reporter.enabled`|false|Whether to dump analysis results in any custom output
 `streamingLens.expectedMicroBatchSLAMillis`|1000 * 60 * 2|Interval in milliseconds for SLA
-`streamingLens.reporter.className`|com.qubole.spark.streaminglens.reporter.JsonFileReporter|Fully resolved classname for reporter class
+`streamingLens.reporter.className`||Fully resolved classname for reporter class
 `streamingLens.reporter.discountFactor`|0.95|Exponential factor by which to discount earlier microbatches while computing aggregated state
 `streamingLens.reporter.intervalMinutes`|60|Frequency of reporting the health of streaming query
 
