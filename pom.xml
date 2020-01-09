@@ -20,7 +20,7 @@
   
   <groupId>com.qubole</groupId>
   <artifactId>spark-streaminglens_2.11</artifactId>
-  <version>0.5.1</version>
+  <version>0.5.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Streaminglens Integration for Structured Streaming</name>
   <description>Profiling Tool for Spark Structured Streaming Applications</description>
@@ -49,7 +49,7 @@
     <connection>scm:git:git://github.com/qubole/streaminglens.git</connection>
     <url>https://github.com/qubole/streaminglens</url>
     <developerConnection>scm:git:git@github.com:qubole/streaminglens.git</developerConnection>
-    <tag>spark-streaminglens_2.11-0.5.1</tag>
+    <tag>spark-streaminglens_2.11-0.5.0</tag>
   </scm>
 
   <inceptionYear>2020</inceptionYear>
