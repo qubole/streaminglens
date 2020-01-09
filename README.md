@@ -63,7 +63,7 @@ To build Streaminglens, clone this repository and run:
 mvn -DskipTests clean package
 ```
 
-This will create `target/spark-streaminglens_2.11-0.1.0.jar` file which contains streaminglens code and associated dependencies. Make sure the Scala and Java versions correspond to those required by your Spark cluster. We have tested it with Java 7/8, Scala 2.11 and Spark version 2.4.0. 
+This will create `target/spark-streaminglens_2.11-0.5.0.jar` file which contains streaminglens code and associated dependencies. Make sure the Scala and Java versions correspond to those required by your Spark cluster. We have tested it with Java 7/8, Scala 2.11 and Spark version 2.4.0.
 
 ## How to use Streaminglens?
 
@@ -71,7 +71,7 @@ This will create `target/spark-streaminglens_2.11-0.1.0.jar` file which contains
 
 Once you have the streaminglens jar avaialbale, you need to add it to your spark-submit command line options
 ```
---jars /path/to/spark-streaminglens_2.11-0.1.0.jar
+--jars /path/to/spark-streaminglens_2.11-0.5.0.jar
 ```
 
 You could also add this to your cluster's `spark-defaults.conf` so that it is automatically
