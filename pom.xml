@@ -110,6 +110,8 @@
               <id>compile</id>
               <goals>
                 <goal>compile</goal>
+                <goal>add-source</goal>
+                <goal>doc-jar</goal>
               </goals>
               <phase>compile</phase>
             </execution>
@@ -152,7 +154,7 @@
             </execution>
           </executions>
         </plugin>
-      </plugins>        
+      </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
