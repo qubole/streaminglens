@@ -1,6 +1,6 @@
 # Streaminglens
 
-[![Build Status](https://travis-ci.org/qubole/streaminglens.png?branch=master)](https://travis-ci.org/qubole/streaminglens)
+[![Build Status](https://travis-ci.org/qubole/streaminglens.svg?branch=master)](https://travis-ci.org/qubole/streaminglens)
 
 Streaminglens is a profiling tool for Spark Structured Streaming Applications running in micro-batch mode. Since the execution plan for each micro-batch is identical, we can continuously learn from previous micro-batches to predict the ideal spark cluster configurations for the next micro-batch. Streaminglens analyzes the excecution run of last micro-batch every five minutes to give an overall idea of the health of the streaming pipeline.
 
