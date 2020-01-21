@@ -1,5 +1,7 @@
 # Streaminglens
 
+[![Build Status](https://travis-ci.org/qubole/streaminglens.png?branch=master)](https://travis-ci.org/qubole/streaminglens)
+
 Streaminglens is a profiling tool for Spark Structured Streaming Applications running in micro-batch mode. Since the execution plan for each micro-batch is identical, we can continuously learn from previous micro-batches to predict the ideal spark cluster configurations for the next micro-batch. Streaminglens analyzes the excecution run of last micro-batch every five minutes to give an overall idea of the health of the streaming pipeline.
 
 During this analysis, Streaminglens calculates the critical time to complete a micro-batch. Critical Time is the minimum time a Spark job would take to complete if it is run with infinite executors. For more information on how critical time is calculated visit our blog on [Spark tunig tool](https://www.qubole.com/blog/introducing-quboles-spark-tuning-tool/). Streaminglens also takes expected micro-batch SLA as input and it expects every micro-batch to complete before the specified SLA.
