@@ -69,9 +69,14 @@ This will create `target/spark-streaminglens_2.11-0.5.0.jar` file which contains
 
 #### 1. Adding streaminglens jar to spark application
 
-Once you have the streaminglens jar avaialbale, you need to add it to your spark-submit command line options
+You can add Streaminglens jar to Spark jobs launched through spark-shell or spark-submit by using the `--packages` command line option. For example, to include it when starting the spark shell:
 ```
---jars /path/to/spark-streaminglens_2.11-0.5.0.jar
+$ bin/spark-shell --packages com.qubole:spark-streaminglens_2.11:0.5.3
+```
+
+Alternatively, if you have the streaminglens jar avaialbale, you can add it to your spark-submit command line options using the `--jars` option
+```
+--jars /path/to/spark-streaminglens_2.11-0.5.3.jar
 ```
 
 You could also add this to your cluster's `spark-defaults.conf` so that it is automatically
@@ -86,7 +91,7 @@ import com.qubole.spark.StreamingLens
 val streamingLens = new StreamingLens(sparkSession, options)
 ```
 
-Streaminglens requires spark session object and a Map of type [String, String] to be passed as parameters. For more details about various options see the [Configuring Streaminglens Options](#4-configuring-streaminglens-options) section below.
+Streaminglens requires spark session object and a `Map[String, String]` to be passed as parameters. For more details about various options see the [Configuring Streaminglens Options](#4-configuring-streaminglens-options) section below.
 
 #### 3. Using custom reporters
 
